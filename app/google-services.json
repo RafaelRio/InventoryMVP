@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "927706000076",
+    "project_id": "inventory-c1c6f",
+    "storage_bucket": "inventory-c1c6f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:927706000076:android:c97877703428596434f069",
+        "android_client_info": {
+          "package_name": "com.rafario.inventory2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "927706000076-t3dr0n05nt6p3ftb06jj6hcta7fsm3ac.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAt-4XitBkMn-rcD4LeJYCxPYmZITzcxxc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "927706000076-t3dr0n05nt6p3ftb06jj6hcta7fsm3ac.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

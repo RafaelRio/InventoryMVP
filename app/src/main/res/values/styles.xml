@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="HintTextAppareance">
+        <item name="android:background">@drawable/shape_textinput_layout</item>
+        <item name="boxBackgroundMode">none</item>
+        <item name="hintTextColor">@color/colorPrimary</item>
+    </style>
+
+    <style name="TextInputSignUp" parent="HintTextAppareance">
+        <item name="android:background">@null</item>
+    </style>
+
+    <!-- La herencia se puede establecer con un punto y no poner el atributo padre-->
+</resources>

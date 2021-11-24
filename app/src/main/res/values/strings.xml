@@ -1,0 +1,57 @@
+<resources>
+    <string name="app_name">Inventory</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="loginTitle">LOGIN</string>
+    <string name="ckRemember">Remember me</string>
+    <string name="tieUser">User or email</string>
+    <string name="tiePassword">Password</string>
+    <string name="btnRegistro">Registrarse</string>
+    <string name="btnLogin">Login</string>
+    <string name="tvOtherLogin">Iniciar sesion con otras plataformas</string>
+    <string name="tvRegistro">Registro</string>
+    <string name="IntroduceUsuario">Introduce tu usuario</string>
+    <string name="tieEmail">Introduce tu email</string>
+    <string name="tieIntroduceContraseña">Introduzca su contraseña</string>
+    <string name="tieConfirmeContraseña">Confirme su contraseña</string>
+    <string name="btnRegistrarse">Registrarse</string>
+    <string name="title_activity_main">MainActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="btiInventoryDescription">Acceder al inventario</string>
+    <string name="btiDependencyDescription">Acceder a las dependencias</string>
+    <string name="btiSectionsDescription">Acceder a las secciones</string>
+    <string name="btiProductsDescription">Acceder a los productos</string>
+    <string name="btiAboutUsDescription">Acceder a sobre nosotros</string>
+    <string name="btiSettingsDescription">Acceder a ajustes</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="aboutus_fragment_label">fragment_about_us</string>
+    <string name="tvCreated">Fecha de creacion: </string>
+    <string name="tvActivated">Fecha inicio: </string>
+    <string name="tvEnded">Fecha fin: </string>
+    <string name="tvEdit">Modificar inventario: </string>
+    <string name="btnOk">OK</string>
+    <string name="edCreatedContentDescription">Debes introducir la fecha de creacion</string>
+    <string name="edActivatedContentDescription">Debes introducir la fecha de inicio</string>
+    <string name="edEndedContentDescription">debes introducir la fecha de final</string>
+    <string name="action_aboutUs">Sobre nosotros</string>
+    <string name="action_settings">Preferencias</string>
+    <string name="action_search">Buscar</string>
+    <string name="action_orderdependency">Ordenar dependencias</string>
+    <string name="createdUser">Usuario creado con exito</string>
+
+</resources>

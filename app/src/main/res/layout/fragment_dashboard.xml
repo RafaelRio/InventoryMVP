@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:stretchColumns="0,1"
+    android:gravity="center"
+    android:padding="@dimen/fDashboard_tableLayout_padding"
+    tools:context=".MainActivity">
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <ImageButton
+            android:id="@+id/btiInventory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/btiInventoryDescription"
+            app:srcCompat="@drawable/ic_inventory"
+            tools:ignore="ImageContrastCheck" />
+
+        <ImageButton
+            android:id="@+id/btiDependency"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/btiDependencyDescription"
+            app:srcCompat="@drawable/ic_dependency"
+            tools:ignore="ImageContrastCheck" />
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <View android:layout_height="@dimen/Fdashboard_view_height"
+            android:layout_width="@dimen/Fdashboard_view_width"
+            android:layout_span="2"/>
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <ImageButton
+            android:id="@+id/btiSections"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_sections"
+            android:contentDescription="@string/btiSectionsDescription"/>
+
+        <ImageButton
+            android:id="@+id/btiProducts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_products"
+            android:contentDescription="@string/btiProductsDescription"/>
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <View android:layout_height="@dimen/Fdashboard_view_height"
+        android:layout_width="@dimen/Fdashboard_view_width"
+        android:layout_span="2"/>
+
+    </TableRow>
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <ImageButton
+            android:id="@+id/btiAboutUs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_aboutus"
+            android:contentDescription="@string/btiAboutUsDescription"/>
+
+        <ImageButton
+            android:id="@+id/btiSettings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_settings"
+            android:contentDescription="@string/btiSettingsDescription"/>
+
+    </TableRow>
+</TableLayout>

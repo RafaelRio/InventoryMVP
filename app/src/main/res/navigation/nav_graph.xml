@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/DashBoardFragment">
+
+    <fragment
+        android:id="@+id/DashBoardFragment"
+        android:name="com.example.inventory2.ui.DashBoardFragment"
+        android:label="@string/first_fragment_label"
+        tools:layout="@layout/fragment_dashboard">
+        <action
+            android:id="@+id/action_FirstFragment_to_aboutUsFragment"
+            app:destination="@id/aboutUsFragment" />
+        <action
+            android:id="@+id/action_FirstFragment_to_addInventoryFragment"
+            app:destination="@id/addInventoryFragment" />
+        <action
+            android:id="@+id/action_FirstFragment_to_dependencyListFragment"
+            app:destination="@id/dependencyListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/aboutUsFragment"
+        android:name="com.example.inventory2.ui.AboutUs.AboutUsFragment"
+        android:label="@string/aboutus_fragment_label"
+        tools:layout="@layout/fragment_about_us" />
+    <fragment
+        android:id="@+id/addInventoryFragment"
+        android:name="com.example.inventory2.ui.inventory.AddInventoryFragment"
+        android:label="fragment_add_inventory"
+        tools:layout="@layout/fragment_add_inventory" />
+    <fragment
+        android:id="@+id/dependencyListFragment"
+        android:name="com.example.inventory2.ui.dependency.DependencyListFragment"
+        android:label="fragment_dependency_list"
+        tools:layout="@layout/fragment_dependency_list" />
+</navigation>

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.signup.SignUpActivity">
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gldStart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.05" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gldEnd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.95" />
+
+    <TextView
+        android:id="@+id/tvTitleSingUp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="32dp"
+        android:text="@string/tvRegistro"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:gravity="center_horizontal"
+        android:textSize="@dimen/tvRegistro_size"
+        android:fontFamily="@font/edarling"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilUser"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@id/gldEnd"
+        app:layout_constraintStart_toStartOf="@id/gldStart"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitleSingUp"
+        android:layout_marginTop="@dimen/tvLogin_margin_top"
+        app:startIconDrawable="@drawable/ic_action_user"
+        style="@style/TextInputSignUp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tieUser"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/IntroduceUsuario"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilEmail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/tilUser"
+        app:layout_constraintEnd_toStartOf="@id/gldEnd"
+        app:layout_constraintStart_toStartOf="@id/gldStart"
+        android:layout_marginTop="@dimen/tvLogin_margin_top"
+        app:startIconDrawable="@drawable/ic_action_mail"
+        style="@style/TextInputSignUp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tieEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/tieEmail" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilPassword"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/tilEmail"
+        app:layout_constraintEnd_toStartOf="@id/gldEnd"
+        app:layout_constraintStart_toStartOf="@id/gldStart"
+        android:layout_marginTop="@dimen/tvLogin_margin_top"
+        app:startIconDrawable="@drawable/ic_action_lock"
+        style="@style/TextInputSignUp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tiePassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/tieIntroduceContraseña"
+            android:inputType="textPassword"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilConfirmPassword"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/tilPassword"
+        app:layout_constraintEnd_toStartOf="@id/gldEnd"
+        app:layout_constraintStart_toStartOf="@id/gldStart"
+        android:layout_marginTop="@dimen/tvLogin_margin_top"
+        app:startIconDrawable="@drawable/ic_action_lock"
+        style="@style/TextInputSignUp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tieConfirmPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/tieConfirmeContraseña"
+            android:inputType="textPassword" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/btnSignUp"
+        android:layout_width="177dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="@dimen/btnSignUp_marginTop"
+        android:layout_marginEnd="32dp"
+        android:backgroundTint="@color/colorSecondary"
+        android:text="@string/btnRegistrarse"
+        android:textColor="#212121"
+        app:layout_constraintEnd_toStartOf="@id/gldEnd"
+        app:layout_constraintStart_toStartOf="@id/gldStart"
+        app:layout_constraintTop_toBottomOf="@+id/tilConfirmPassword" />
+</androidx.constraintlayout.widget.ConstraintLayout>
