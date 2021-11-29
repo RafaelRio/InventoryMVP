@@ -8,8 +8,12 @@ import android.widget.Toast;
 import com.example.inventory2.R;
 import com.example.inventory2.databinding.ActivityLoginBinding;
 import com.example.inventory2.databinding.ActivitySignUpBinding;
+import com.example.inventory2.ui.base.Event;
 import com.example.inventory2.ui.login.LoginActivity;
 import com.example.inventory2.ui.login.LoginContract;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
 public class SignUpActivity extends AppCompatActivity implements SignUpContract.View {
     ActivitySignUpBinding binding;
@@ -32,6 +36,8 @@ public class SignUpActivity extends AppCompatActivity implements SignUpContract.
                 binding.tieConfirmPassword.getText().toString()
         )));
         presenter = new SignUpPresenter(this);
+
+        EventBus.getDefault().register(this);
     }
 
     @Override
@@ -39,6 +45,7 @@ public class SignUpActivity extends AppCompatActivity implements SignUpContract.
         super.onDestroy();
         //CON ESTO SE EVITARIA UN FUTURO MEMORY LEAKS (PERDIDA DE MEMORIA)
         presenter = null;
+        EventBus.getDefault().unregister(this);
     }
 
 
@@ -104,5 +111,11 @@ public class SignUpActivity extends AppCompatActivity implements SignUpContract.
     @Override
     public void showProgressBar() {
 
+    }
+
+    @Subscribe
+    public void onEvent(Event event){
+        hideProgressBar();
+        Toast.makeText(this, event.getMessage(), Toast.LENGTH_SHORT).show();
     }
 }

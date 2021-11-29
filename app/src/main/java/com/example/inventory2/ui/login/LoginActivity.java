@@ -16,8 +16,12 @@ import com.example.inventory2.MainActivity;
 import com.example.inventory2.R;
 import com.example.inventory2.databinding.ActivityLoginBinding;
 import com.example.inventory2.model.User;
+import com.example.inventory2.ui.base.Event;
 import com.example.inventory2.ui.signup.SignUpActivity;
 import com.example.inventory2.utils.CommonUtils;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
 import java.util.regex.Pattern;
 
@@ -32,6 +36,8 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         super.onDestroy();
         //CON ESTO SE EVITARIA UN FUTURO MEMORY LEAKS (PERDIDA DE MEMORIA)
         presenter.onDestroy();
+        //Se quita como suscriptor del EventBus
+        EventBus.getDefault().unregister(this);
     }
 
     @Override
@@ -49,6 +55,9 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         binding.tiePassword.addTextChangedListener(new LoginTextWatcher(binding.tiePassword));
 
         presenter = new LoginPresenter(this);
+
+        //La vista se registra como suscriptor del EventBus
+        EventBus.getDefault().register(this);
     }
 
     public void toSignUpActivity() {
@@ -180,4 +189,10 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     }
 
     //endregion
+
+    @Subscribe
+    public void onEvent(Event event){
+        hideProgressBar();
+        Toast.makeText(this, event.getMessage(), Toast.LENGTH_SHORT).show();
+    }
 }

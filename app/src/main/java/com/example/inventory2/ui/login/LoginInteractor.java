@@ -3,7 +3,6 @@ package com.example.inventory2.ui.login;
 import android.os.Handler;
 import android.text.TextUtils;
 
-import com.example.inventory2.data.repository.LoginRepositoryImpl;
 import com.example.inventory2.data.repository.LoginRepositoryStatic;
 import com.example.inventory2.model.User;
 import com.example.inventory2.utils.CommonUtils;
