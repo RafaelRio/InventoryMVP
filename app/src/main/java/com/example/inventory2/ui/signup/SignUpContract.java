@@ -33,6 +33,6 @@ public interface SignUpContract {
     }
 
     interface Repository {
-        void validateSignUp(String user, String email, String password, String confirmPassword);
+        void SignUp(String user, String email, String password, String confirmPassword);
     }
 }

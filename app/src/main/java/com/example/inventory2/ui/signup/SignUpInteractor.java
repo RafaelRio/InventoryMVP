@@ -58,7 +58,7 @@ public class SignUpInteractor implements SignUpContract.onSignUpListener {
                     return;
                 }
 
-                repository.validateSignUp(user, email, password, confirmPassword);
+                repository.SignUp(user, email, password, confirmPassword);
             }
         }, 2000);
     }

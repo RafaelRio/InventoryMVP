@@ -82,7 +82,7 @@ public class LoginRepositoryStatic implements LoginContract.Repository, SignUpCo
 
 
     @Override
-    public void validateSignUp(String user, String email, String password, String confirmPassword) {
+    public void SignUp(String user, String email, String password, String confirmPassword) {
         for (User user1 : users) {
             if (user1.getEmail().equals(email) && user1.getPassword().equals(password)) {
                 signUpListener.onFailure("El usuario ya existe");

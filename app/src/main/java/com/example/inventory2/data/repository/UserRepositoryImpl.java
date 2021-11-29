@@ -13,6 +13,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
+import org.greenrobot.eventbus.EventBus;
+
 public class UserRepositoryImpl implements LoginContract.Repository, SignUpContract.Repository {
 
     private static final String TAG = UserRepositoryImpl.class.getName();
@@ -44,13 +46,15 @@ public class UserRepositoryImpl implements LoginContract.Repository, SignUpContr
                             Event loginEvent = new Event();
                             loginEvent.setEventType(Event.onLoginError);
                             loginEvent.setMessage(task.getException().toString());
+
+                            EventBus.getDefault().post(loginEvent);
                         }
                     }
                 });
     }
 
     @Override
-    public void validateSignUp(String user, String email, String password, String confirmPassword) {
+    public void SignUp(String user, String email, String password, String confirmPassword) {
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -67,6 +71,8 @@ public class UserRepositoryImpl implements LoginContract.Repository, SignUpContr
                             Event signUpEvent = new Event();
                             signUpEvent.setEventType(Event.onSignUpError);
                             signUpEvent.setMessage(task.getException().toString());
+
+                            EventBus.getDefault().post(signUpEvent);
                         }
                     }
                 });
