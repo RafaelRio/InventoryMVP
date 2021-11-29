@@ -39,18 +39,22 @@ public class LoginPresenter implements LoginContract.Presenter, LoginContract.On
         view.setPasswordError();
     }
 
-
     @Override
-    public void onSucces(String message) {
+    public void onSuccess(String message) {
         view.hideProgressBar();
-        view.onSucces(message);
+        view.onSuccess(message);
     }
-
 
     @Override
     public void onFailure(String message) {
         view.hideProgressBar();
         view.onFailure(message);
+    }
+
+    @Override
+    public void onDestroy() {
+        this.view = null;
+        this.interactor = null;
     }
 
     //endregion

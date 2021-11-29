@@ -31,7 +31,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     protected void onDestroy() {
         super.onDestroy();
         //CON ESTO SE EVITARIA UN FUTURO MEMORY LEAKS (PERDIDA DE MEMORIA)
-        presenter = null;
+        presenter.onDestroy();
     }
 
     @Override
@@ -63,6 +63,11 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
 
     //region Metodos del contrato View Presenter
 
+    @Override
+    public void setEmailError() {
+
+    }
+
     /**
      * Este metodo activa el error en el TextInputLayout. Mostrar el texto oportuno
      */
@@ -85,7 +90,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
      * Secuencia normal. Usuario y contraseña correctos y el usuario existe en la base de datos
      */
     @Override
-    public void onSucces(String message) {
+    public void onSuccess(String message) {
         toMainActivity();
     }
 

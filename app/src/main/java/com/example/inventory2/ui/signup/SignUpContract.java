@@ -1,18 +1,14 @@
 package com.example.inventory2.ui.signup;
 
 import com.example.inventory2.model.User;
+import com.example.inventory2.ui.base.iProgressView;
 import com.example.inventory2.ui.login.LoginContract;
 
 public interface SignUpContract {
-    interface View extends onSignUpListener{
+    interface View extends LoginContract.View, iProgressView {
         void setUserEmptyError();
-        void setEmailEmptyError();
-        void setPasswordEmptyError();
         void setConfirmPasswordEmptyError();
-
-        void setPasswordError();
-        void setEmailError();
-
+        void setConfirmPasswordError();
         void setPasswordDontMatch();
 
     }
@@ -27,13 +23,10 @@ public interface SignUpContract {
 
     }
 
-    interface onInteractorListener extends onSignUpListener{
+    interface onInteractorListener extends LoginContract.OnInteractorListener{
         void onUserEmptyError();
-        void onEmailEmptyError();
-        void onPasswordEmptyError();
         void onConfirmPasswordEmptyError();
 
-        void onPasswordError();
         void onEmailError();
 
         void onPasswordDontMatch();

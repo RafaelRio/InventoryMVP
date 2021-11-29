@@ -63,6 +63,11 @@ public class SignUpActivity extends AppCompatActivity implements SignUpContract.
     }
 
     @Override
+    public void setConfirmPasswordError() {
+
+    }
+
+    @Override
     public void setPasswordError() {
         binding.tilPassword.setError(getString(R.string.err_Password));
     }
@@ -91,4 +96,13 @@ public class SignUpActivity extends AppCompatActivity implements SignUpContract.
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
+    @Override
+    public void hideProgressBar() {
+
+    }
+
+    @Override
+    public void showProgressBar() {
+
+    }
 }

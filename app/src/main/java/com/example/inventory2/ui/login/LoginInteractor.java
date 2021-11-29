@@ -51,9 +51,10 @@ public class LoginInteractor implements LoginContract.OnLoginListener {
 
     //Estos metodos vienen de la respuesta que nos da el repositorio
 
+
     @Override
-    public void onSucces(String message) {
-        listener.onSucces(message);
+    public void onSuccess(String message) {
+        listener.onSuccess(message);
     }
 
     @Override

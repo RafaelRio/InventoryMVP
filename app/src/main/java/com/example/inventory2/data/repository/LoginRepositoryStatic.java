@@ -72,7 +72,7 @@ public class LoginRepositoryStatic implements LoginContract.Repository, SignUpCo
     public void login(User u) {
         for (User user : users) {
             if (user.getEmail().equals(u.getEmail()) && user.getPassword().equals(u.getPassword())) {
-                loginListener.onSucces("Usuario correcto");
+                loginListener.onSuccess("Usuario correcto");
                 return;
             }
         }

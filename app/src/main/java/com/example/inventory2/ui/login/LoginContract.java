@@ -1,6 +1,9 @@
 package com.example.inventory2.ui.login;
 
 import com.example.inventory2.model.User;
+import com.example.inventory2.ui.base.BasePresenter;
+import com.example.inventory2.ui.base.OnRepositoryCallback;
+import com.example.inventory2.ui.base.iProgressView;
 
 /**
  * Esta interfaz es el contrato entre la vista y el presentador del Login
@@ -10,25 +13,20 @@ public interface LoginContract {
     /**
      * Interfaz que debe implementar la vista
      */
-    interface View extends OnLoginListener{
+    interface View extends OnRepositoryCallback, iProgressView {
         //Alternativas del caso de uso
         //Elementos de la vista
-
+        void setEmailError();
         void setEmailEmptyError();
         void setPasswordEmptyError();
         void setPasswordError();
-
-
-        //Contrato de la vista y presentador
-        void showProgressBar();
-        void hideProgressBar();
 
     }
 
     /**
      * Interfaz que debe inicializar el presenter
      */
-    interface Presenter extends OnLoginListener{
+    interface Presenter extends BasePresenter {
         void validateCredentials(User user);
     }
 
@@ -56,7 +54,7 @@ public interface LoginContract {
      * Esta interfaz es la secuancia normal de LOGIN
      */
     interface OnLoginListener{
-        void onSucces(String message);
+        void onSuccess(String message);
         void onFailure(String message);
     }
 
