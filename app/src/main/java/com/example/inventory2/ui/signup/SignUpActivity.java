@@ -44,7 +44,7 @@ public class SignUpActivity extends AppCompatActivity implements SignUpContract.
     protected void onDestroy() {
         super.onDestroy();
         //CON ESTO SE EVITARIA UN FUTURO MEMORY LEAKS (PERDIDA DE MEMORIA)
-        presenter = null;
+        presenter.onDestroy();
         EventBus.getDefault().unregister(this);
     }
 
@@ -70,11 +70,6 @@ public class SignUpActivity extends AppCompatActivity implements SignUpContract.
     }
 
     @Override
-    public void setConfirmPasswordError() {
-
-    }
-
-    @Override
     public void setPasswordError() {
         binding.tilPassword.setError(getString(R.string.err_Password));
     }
@@ -95,7 +90,7 @@ public class SignUpActivity extends AppCompatActivity implements SignUpContract.
      */
     @Override
     public void onSuccess(String message) {
-
+        onBackPressed();
     }
 
     @Override

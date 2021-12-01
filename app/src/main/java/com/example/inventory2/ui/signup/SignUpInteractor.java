@@ -4,17 +4,19 @@ import android.os.Handler;
 import android.text.TextUtils;
 import android.util.Patterns;
 
+import com.example.inventory2.data.repository.LoginRepositoryImpl;
 import com.example.inventory2.data.repository.LoginRepositoryStatic;
+import com.example.inventory2.ui.base.OnRepositoryCallback;
 import com.example.inventory2.utils.CommonUtils;
 
-public class SignUpInteractor implements SignUpContract.onSignUpListener {
+public class SignUpInteractor implements OnRepositoryCallback {
 
     private SignUpContract.Repository repository;
-    private SignUpContract.onInteractorListener listener;
+    private SignUpContract.onSignUpInteractorListener listener;
 
-    public SignUpInteractor(SignUpContract.onInteractorListener listener) {
+    public SignUpInteractor(SignUpContract.onSignUpInteractorListener listener) {
         this.listener = listener;
-        repository = LoginRepositoryStatic.getInstance(this);
+        repository = LoginRepositoryImpl.getInstance(this);
 
     }
 
@@ -58,7 +60,8 @@ public class SignUpInteractor implements SignUpContract.onSignUpListener {
                     return;
                 }
 
-                repository.SignUp(user, email, password, confirmPassword);
+                //repository.SignUp(user, email, password, confirmPassword);
+                LoginRepositoryImpl.getInstance(SignUpInteractor.this).SignUp(user, email, password, confirmPassword);
             }
         }, 2000);
     }

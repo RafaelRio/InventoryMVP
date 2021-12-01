@@ -42,7 +42,7 @@ public interface LoginContract {
      * Interfaz que debe implementar el listener que se le pasa del Interactor
      * Esta interfaz son las posibles alternativas del caso de uso del LOGIN
      */
-    interface OnInteractorListener extends OnLoginListener{
+    interface OnInteractorListener extends OnRepositoryCallback{
         void onEmailEmptyError();
         void onPasswordEmptyError();
         void onPasswordError();

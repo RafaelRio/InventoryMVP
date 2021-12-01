@@ -1,6 +1,6 @@
 package com.example.inventory2.ui.signup;
 
-public class SignUpPresenter implements SignUpContract.Presenter, SignUpContract.onInteractorListener {
+public class SignUpPresenter implements SignUpContract.Presenter, SignUpContract.onSignUpInteractorListener {
 
     private SignUpContract.View view;
     private SignUpInteractor interactor;
@@ -58,5 +58,10 @@ public class SignUpPresenter implements SignUpContract.Presenter, SignUpContract
     @Override
     public void onPasswordDontMatch() {
         view.setPasswordDontMatch();
+    }
+
+    @Override
+    public void onDestroy() {
+
     }
 }

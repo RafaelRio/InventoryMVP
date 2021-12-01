@@ -6,6 +6,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 
 import com.example.inventory2.model.User;
+import com.example.inventory2.ui.base.OnRepositoryCallback;
 import com.example.inventory2.ui.login.LoginContract;
 import com.example.inventory2.ui.signup.SignUpContract;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -26,9 +27,8 @@ import java.util.ArrayList;
 public class LoginRepositoryStatic implements LoginContract.Repository, SignUpContract.Repository{
 
     private static LoginRepositoryStatic instance;
-    private LoginContract.OnLoginListener loginListener;
-    private SignUpContract.onSignUpListener signUpListener;
     private ArrayList<User> users;      //ArrayList de usuarios autorizados en mi App
+    OnRepositoryCallback callback;
 
     private LoginRepositoryStatic() {
         users = new ArrayList<>();
@@ -45,20 +45,11 @@ public class LoginRepositoryStatic implements LoginContract.Repository, SignUpCo
     }
 
 
-    public static LoginRepositoryStatic getInstance(LoginContract.OnLoginListener listener){
+    public static LoginRepositoryStatic getInstance(OnRepositoryCallback listener){
         if (instance == null){
             instance = new LoginRepositoryStatic();
         }
-        instance.loginListener = listener;
-        return instance;
-    }
-
-
-    public static LoginRepositoryStatic getInstance(SignUpContract.onSignUpListener signUpListener){
-        if (instance == null){
-            instance = new LoginRepositoryStatic();
-        }
-        instance.signUpListener = signUpListener;
+        instance.callback = listener;
         return instance;
     }
 
@@ -72,12 +63,12 @@ public class LoginRepositoryStatic implements LoginContract.Repository, SignUpCo
     public void login(User u) {
         for (User user : users) {
             if (user.getEmail().equals(u.getEmail()) && user.getPassword().equals(u.getPassword())) {
-                loginListener.onSuccess("Usuario correcto");
+                callback.onSuccess("Usuario correcto");
                 return;
             }
         }
         //En caso contrario, no existe
-        loginListener.onFailure("Error en la autenticacion");
+        callback.onFailure("Error en la autenticacion");
     }
 
 
@@ -85,12 +76,12 @@ public class LoginRepositoryStatic implements LoginContract.Repository, SignUpCo
     public void SignUp(String user, String email, String password, String confirmPassword) {
         for (User user1 : users) {
             if (user1.getEmail().equals(email) && user1.getPassword().equals(password)) {
-                signUpListener.onFailure("El usuario ya existe");
+                callback.onFailure("El usuario ya existe");
                 return;
             }
         }
         //En caso contrario, no existe
         users.add(new User(email, password));
-        signUpListener.onSuccess("Usuario creado con éxito");
+        callback.onSuccess("Usuario creado con éxito");
     }
 }

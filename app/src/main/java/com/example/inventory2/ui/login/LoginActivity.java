@@ -36,8 +36,21 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         super.onDestroy();
         //CON ESTO SE EVITARIA UN FUTURO MEMORY LEAKS (PERDIDA DE MEMORIA)
         presenter.onDestroy();
+
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
         //Se quita como suscriptor del EventBus
         EventBus.getDefault().unregister(this);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        //La vista se registra como suscriptor del EventBus
+        EventBus.getDefault().register(this);
     }
 
     @Override
@@ -56,8 +69,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
 
         presenter = new LoginPresenter(this);
 
-        //La vista se registra como suscriptor del EventBus
-        EventBus.getDefault().register(this);
+
     }
 
     public void toSignUpActivity() {

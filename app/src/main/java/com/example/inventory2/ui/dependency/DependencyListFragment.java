@@ -1,14 +1,6 @@
-
 package com.example.inventory2.ui.dependency;
 
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -16,6 +8,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.inventory2.R;
 import com.example.inventory2.databinding.FragmentDependencyListBinding;
@@ -42,7 +40,7 @@ public class DependencyListFragment extends Fragment {
     //3. Implementar las acciones especificas (iten) del menu del fragment
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.action_orderdependency:
                 Toast.makeText(getActivity(), "Se ha pulsado el ordenar dependencia", Toast.LENGTH_SHORT).show();
                 return true;

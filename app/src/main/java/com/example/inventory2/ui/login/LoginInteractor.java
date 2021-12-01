@@ -3,11 +3,13 @@ package com.example.inventory2.ui.login;
 import android.os.Handler;
 import android.text.TextUtils;
 
+import com.example.inventory2.data.repository.LoginRepositoryImpl;
 import com.example.inventory2.data.repository.LoginRepositoryStatic;
 import com.example.inventory2.model.User;
+import com.example.inventory2.ui.base.OnRepositoryCallback;
 import com.example.inventory2.utils.CommonUtils;
 
-public class LoginInteractor implements LoginContract.OnLoginListener {
+public class LoginInteractor implements OnRepositoryCallback {
 
     /**
      * El presentador que quiera utilizar esta clase debe
@@ -19,7 +21,7 @@ public class LoginInteractor implements LoginContract.OnLoginListener {
 
     public LoginInteractor(LoginContract.OnInteractorListener listener) {
         this.listener = listener;
-        this.repository = LoginRepositoryStatic.getInstance(this);
+        this.repository = LoginRepositoryImpl.getInstance(this);
     }
 
 
@@ -43,7 +45,8 @@ public class LoginInteractor implements LoginContract.OnLoginListener {
                     return;
                 }
 
-                repository.login(user);
+                //repository.login(user);
+                LoginRepositoryImpl.getInstance(LoginInteractor.this).login(user);
             }
         }, 2000);
     }

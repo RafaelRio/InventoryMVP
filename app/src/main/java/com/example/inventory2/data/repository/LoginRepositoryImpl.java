@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 
 import com.example.inventory2.model.User;
 import com.example.inventory2.ui.base.Event;
+import com.example.inventory2.ui.base.OnRepositoryCallback;
 import com.example.inventory2.ui.login.LoginContract;
 import com.example.inventory2.ui.signup.SignUpContract;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -15,17 +16,17 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import org.greenrobot.eventbus.EventBus;
 
-public class UserRepositoryImpl implements LoginContract.Repository, SignUpContract.Repository {
+public class LoginRepositoryImpl implements LoginContract.Repository, SignUpContract.Repository {
 
-    private static final String TAG = UserRepositoryImpl.class.getName();
-    private static UserRepositoryImpl instance;
-    private LoginContract.OnLoginListener listener;
+    private static final String TAG = LoginRepositoryImpl.class.getName();
+    private static LoginRepositoryImpl instance;
+    private OnRepositoryCallback callback;
 
-    public static UserRepositoryImpl getInstance(LoginContract.OnLoginListener listener) {
+    public static LoginRepositoryImpl getInstance(OnRepositoryCallback listener) {
         if (instance == null) {
-            instance = new UserRepositoryImpl();
+            instance = new LoginRepositoryImpl();
         }
-        instance.listener = listener;
+        instance.callback = listener;
         return instance;
     }
 
@@ -38,7 +39,7 @@ public class UserRepositoryImpl implements LoginContract.Repository, SignUpContr
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "createUserWithEmail:success");
-                            listener.onSuccess("Usuario correcto");
+                            callback.onSuccess("Usuario correcto");
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "createUserWithEmail:failure", task.getException());
@@ -63,7 +64,7 @@ public class UserRepositoryImpl implements LoginContract.Repository, SignUpContr
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "createUserWithEmail:success");
-                            listener.onSuccess("Usuario correcto");
+                            callback.onSuccess("Usuario correcto");
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "createUserWithEmail:failure", task.getException());
