@@ -3,6 +3,7 @@ package com.example.inventory2.ui.dependency;
 import com.example.inventory2.model.Dependency;
 import com.example.inventory2.ui.base.BasePresenter;
 import com.example.inventory2.ui.base.OnRepositoryCallback;
+import com.example.inventory2.ui.base.OnRepositoryListCallback;
 
 public interface DependencyListContract {
 
@@ -45,9 +46,6 @@ public interface DependencyListContract {
      * - Eliminar (delete)
      * - Deshacer (undo)
      */
-    interface OnInteractorListener extends OnRepositoryCallback {
-        void onDeleteSuccess();
-
-        void onUndoSuccess();
+    interface OnInteractorListener extends OnRepositoryListCallback {
     }
 }

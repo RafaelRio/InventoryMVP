@@ -18,7 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.inventory2.R;
 import com.example.inventory2.databinding.FragmentDependencyListBinding;
 
-public class DependencyListFragment extends Fragment {
+public class DependencyListFragment extends Fragment implements DependencyListContract.View {
 
     private FragmentDependencyListBinding binding;
     private DependencyAdapter adapter;
