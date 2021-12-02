@@ -17,18 +17,26 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.inventory2.R;
 import com.example.inventory2.databinding.FragmentDependencyListBinding;
+import com.example.inventory2.model.Dependency;
 
-public class DependencyListFragment extends Fragment implements DependencyListContract.View {
+import java.util.ArrayList;
+import java.util.List;
+
+public class DependencyListFragment extends Fragment implements DependencyListContract.View, DependencyAdapter.OnManageDependencyListener {
 
     private FragmentDependencyListBinding binding;
     private DependencyAdapter adapter;
+    private DependencyListContract.Presenter presenter;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //1. Se debe indicar a la activity que se quiere modificar el menu
         setHasOptionsMenu(true);
+        //2. Se inicializa el presenter
+        presenter = new DependencyListPresenter(this);
     }
+
 
     //2. Sobreescribir el metodo onCreateOptionsMenu para añadir el menu del fragment
     @Override
@@ -37,7 +45,7 @@ public class DependencyListFragment extends Fragment implements DependencyListCo
         super.onCreateOptionsMenu(menu, inflater);
     }
 
-    //3. Implementar las acciones especificas (iten) del menu del fragment
+    //3. Implementar las acciones especificas (item) del menu del fragment
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
@@ -64,12 +72,18 @@ public class DependencyListFragment extends Fragment implements DependencyListCo
         initRvDependency();
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        presenter.load();
+    }
+
     /**
      * Este metodo inicializa el componente recyclerView
      */
     private void initRvDependency() {
         //1. Inicializar adapter
-        adapter = new DependencyAdapter();
+        adapter = new DependencyAdapter(new ArrayList<>(), this);
 
         //2. OBLIGATORIO -> Se debe indicar que el diseño (layout) tendrá el recyclerView
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL, false);
@@ -80,4 +94,63 @@ public class DependencyListFragment extends Fragment implements DependencyListCo
         //4. Asigna a la vista sus datos (modelo)
         binding.rvDependency.setAdapter(adapter);
     }
+
+    //region Metodos que vienen de la interfaz del ADAPTER
+    @Override
+    public void onEditDependency(Dependency dependency) {
+
+    }
+
+    @Override
+    public void onDeleteDependency(Dependency dependency) {
+
+    }
+    //endregion
+
+    //region Metodos que vienen de la respuesta del REPOSITORIO
+    @Override
+    public void onFailure(String mensaje) {
+
+    }
+
+    @Override
+    public <T> void onSuccess(List<T> list) {
+
+    }
+
+    @Override
+    public void onDeleteSuccess(String mensaje) {
+
+    }
+
+    @Override
+    public void onUndoSuccess(String mensaje) {
+
+    }
+    //endregion
+
+    //region Metodos que vienen del requisito que se debe mostrar una vista de PROGRESSBAR
+    @Override
+    public void hideProgressBar() {
+
+    }
+
+    @Override
+    public void showProgressBar() {
+
+    }
+    //endregion
+
+    //region Metodos que vienen del contrato con el PRESENTER
+
+    @Override
+    public void showData(ArrayList<Dependency> list) {
+        adapter.update(list);
+    }
+
+    @Override
+    public void showNoData() {
+
+    }
+    //endregion
 }

@@ -55,4 +55,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics'
     implementation 'org.greenrobot:eventbus:3.2.0'
 
+
+    //Libreria que pone icono en la primera letra
+    implementation 'com.amulyakhare:com.amulyakhare.textdrawable:1.0.1'
 }

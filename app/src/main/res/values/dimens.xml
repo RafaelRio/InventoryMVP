@@ -16,4 +16,6 @@
     <dimen name="frgAddInventorygdStart">15dp</dimen>
     <dimen name="fab_elevation">6dp</dimen>
     <dimen name="tvName_marginBottom">2dp</dimen>
+    <dimen name="llDependencyPadding">5dp</dimen>
+    <dimen name="tvNoDataTextSize">24dp</dimen>
 </resources>

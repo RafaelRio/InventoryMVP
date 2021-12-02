@@ -4,11 +4,22 @@ import com.example.inventory2.model.Dependency;
 import com.example.inventory2.ui.base.BasePresenter;
 import com.example.inventory2.ui.base.OnRepositoryCallback;
 import com.example.inventory2.ui.base.OnRepositoryListCallback;
+import com.example.inventory2.ui.base.iProgressView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public interface DependencyListContract {
 
-    interface View {
-
+    /**
+     * Esta interfaz tiene los siguientes metodos
+     *  -La respuesta del repositorio
+     *  -Los metodos necesarios para mortar un progreso
+     *  -Los metodos necesarios para gestionar los datos de un RecyclerView
+     */
+    interface View extends OnRepositoryListCallback, iProgressView {
+        void showData(ArrayList<Dependency> list);
+        void showNoData();
     }
 
     /**

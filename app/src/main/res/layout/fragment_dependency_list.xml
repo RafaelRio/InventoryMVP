@@ -6,6 +6,42 @@
     android:layout_height="match_parent"
     tools:context=".ui.dependency.DependencyListFragment" >
 
+    <!-- Si queremos mostrar un NO DATA hay que poner un LinearLayout
+    donde se muestra una imagen y un texto de que no hay datos-->
+    <LinearLayout
+        android:id="@+id/llNoData_dependency_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.7">
+
+        </ImageView>
+
+        <TextView
+            android:id="@+id/tvNoData"
+            android:fontFamily="@font/edarling"
+            android:textSize="@dimen/tvNoDataTextSize"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.3">
+
+        </TextView>
+
+    </LinearLayout>
+
+    <!-- Con la etiqueta include se añade una barra de progreso o anillo, que inicialmente
+    esta oculta y se mostrara en las operaciones asincronas -->
+    <include
+        android:id="@+id/include_layout_progressBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/layout_progressbar"></include>
+
     <!--Si se usa android:src para cambiar el color del icono del boton flotante se debe definir
     este atributo en el tema coloronSecondary
 

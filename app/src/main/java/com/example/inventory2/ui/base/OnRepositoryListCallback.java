@@ -1,5 +1,8 @@
 package com.example.inventory2.ui.base;
 
+import com.example.inventory2.model.Dependency;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public interface OnRepositoryListCallback {
