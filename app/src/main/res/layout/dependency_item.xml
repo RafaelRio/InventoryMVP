@@ -10,16 +10,17 @@
 
     <ImageView
         android:id="@+id/icon"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="51dp"
+        android:layout_height="51dp"
+        android:layout_margin="7dp"
         app:srcCompat="@drawable/ic_aboutus"
         tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
     <TextView
         android:id="@+id/tvName"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/tvName_marginBottom"
+        android:layout_height="51dp"
+        android:layout_margin="7dp"
         android:text="TextView"
         android:textSize="34sp" />
 

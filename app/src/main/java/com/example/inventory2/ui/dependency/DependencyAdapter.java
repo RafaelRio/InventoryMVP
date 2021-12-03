@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.amulyakhare.textdrawable.TextDrawable;
+import com.amulyakhare.textdrawable.util.ColorGenerator;
 import com.example.inventory2.R;
 import com.example.inventory2.model.Dependency;
 
@@ -19,8 +20,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DependencyAdapter extends RecyclerView.Adapter<DependencyAdapter.ViewHolder> {
-    private ArrayList<Dependency> list;
-    private OnManageDependencyListener listener;
+    private final ArrayList<Dependency> list;
+    private final OnManageDependencyListener listener;
 
 
     /**
@@ -50,11 +51,22 @@ public class DependencyAdapter extends RecyclerView.Adapter<DependencyAdapter.Vi
 
     @Override
     public void onBindViewHolder(@NonNull DependencyAdapter.ViewHolder holder, int position) {
+        //Colores del tema material design
+        ColorGenerator generator = ColorGenerator.MATERIAL;
+        //Generar un color aleatorio
+        int color = generator.getRandomColor();
         TextDrawable drawable = TextDrawable.builder()
-                .buildRound(list.get(position).getName().substring(0,1), Color.BLUE);
-
+                .beginConfig()
+                .toUpperCase()
+                .bold()
+                .endConfig()
+                .buildRound(list.get(position).getName().substring(0, 1), color);
 
         holder.icon.setImageDrawable(drawable);
+
+        //Cuando se actualiza la lista se indica a la clase holder que dependencia es y cual es su listener
+        holder.bind(list.get(position), listener);
+        holder.tvName.setText(list.get(position).getName());
     }
 
     /**
@@ -70,7 +82,20 @@ public class DependencyAdapter extends RecyclerView.Adapter<DependencyAdapter.Vi
         return list.size();
     }
 
+    /**
+     * Se debe llamar al metodo notifyDataSetChanged(); para que
+     * -Anula la vista
+     * -Llama al metodo OnDraw() de todos los elementos de la nueva vista
+     *
+     * @param list
+     */
+    public void update(List<Dependency> list) {
+        this.list.clear();
+        this.list.addAll(list);
 
+        //ERROR DE QUE NO ACTUALIZA
+        notifyDataSetChanged();
+    }
 
     /**
      * Esta interfaz debe implementarla aquellas clases que quieran escuchar los
@@ -84,6 +109,9 @@ public class DependencyAdapter extends RecyclerView.Adapter<DependencyAdapter.Vi
         void onDeleteDependency(Dependency dependency);
     }
 
+
+    //region Metodos que hay que implementar para actualizar la vista
+
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView tvName;
@@ -94,23 +122,30 @@ public class DependencyAdapter extends RecyclerView.Adapter<DependencyAdapter.Vi
             tvName = itemView.findViewById(R.id.tvName);
             icon = itemView.findViewById(R.id.icon);
         }
-    }
 
-
-    //region Metodos que hay que implementar para actualizar la vista
-
-    /**
-     * Se debe llamar al metodo notifyDataSetChanged(); para que
-     *  -Anula la vista
-     *  -Llama al metodo OnDraw() de todos los elementos de la nueva vista
-     * @param list
-     */
-    public void update(List<Dependency> list) {
-        this.list.clear();
-        this.list.addAll(list);
-
-        //ERROR DE QUE NO ACTUALIZA
-        notifyDataSetChanged();
+        /**
+         * Todos los metodos que se crean en la clase ViewHolder tienen acceso al elemento
+         * View que contienen en la variable itemView
+         *
+         * @param dependency
+         * @param listener
+         */
+        public void bind(Dependency dependency, OnManageDependencyListener listener) {
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    listener.onEditDependency(dependency);
+                }
+            });
+            itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view) {
+                    listener.onDeleteDependency(dependency);
+                    //Se indica que se consume el evento y se evita la propagacion del evento en otras vistas
+                    return true;
+                }
+            });
+        }
     }
 
     //endregion

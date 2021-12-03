@@ -12,12 +12,15 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentResultListener;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.inventory2.R;
 import com.example.inventory2.databinding.FragmentDependencyListBinding;
 import com.example.inventory2.model.Dependency;
+import com.example.inventory2.ui.base.BaseDialogFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -98,12 +101,29 @@ public class DependencyListFragment extends Fragment implements DependencyListCo
     //region Metodos que vienen de la interfaz del ADAPTER
     @Override
     public void onEditDependency(Dependency dependency) {
-
+        Toast.makeText(getActivity(), "Editar dependencia " +dependency.getName(), Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onDeleteDependency(Dependency dependency) {
+        Bundle bundle = new Bundle();
+        bundle.putString(BaseDialogFragment.TITLE, "Eliminar dependencia");
+        bundle.putString(BaseDialogFragment.MESSAGE, "¿Quiere eliminar la dependencia " + dependency.getName() + "?");
 
+        //Registrar el listener del BaseDialog. Este codigo sirve para comunicar dos Fragments
+        //en el cual el padre necesita un resultado del hijo. SI SE USA LA LIBRERIA DE SOPORTE
+        //SE DEBE LLAMAR A getSupportFragmentManager()
+        getActivity().getSupportFragmentManager().setFragmentResultListener(BaseDialogFragment.REQUEST, this, new FragmentResultListener() {
+            @Override
+            public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
+                //Si la respuesta del usuario = true, se llama al presentador
+                if (bundle.getBoolean(BaseDialogFragment.KEY_BUNDLE)){
+                    presenter.delete(dependency);
+                }
+            }
+        });
+        NavHostFragment.findNavController(this).
+                navigate(R.id.action_dependencyListFragment_to_baseDialogFragment, bundle);
     }
     //endregion
 
