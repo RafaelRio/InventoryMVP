@@ -5,4 +5,8 @@
         android:id="@+id/action_orderdependency"
         android:orderInCategory="0"
         app:showAsAction="never"/>
+    <item android:title="@string/action_order_byDescription"
+        android:id="@+id/action_order_byDescription"
+        android:orderInCategory="1"
+        app:showAsAction="never"/>
 </menu>

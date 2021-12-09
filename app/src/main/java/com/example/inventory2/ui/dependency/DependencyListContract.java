@@ -20,6 +20,12 @@ public interface DependencyListContract {
     interface View extends OnRepositoryListCallback, iProgressView {
         void showData(ArrayList<Dependency> list);
         void showNoData();
+
+        //Ordena de la A-Z
+        void showDataOrder();
+
+        //Ordena de la Z-A
+        void showDataInverseOrder();
     }
 
     /**
@@ -34,6 +40,9 @@ public interface DependencyListContract {
 
         //3. Cuando el usuario pulsa la opcion undo del SnackBar
         void undo(Dependency dependency);
+
+        //4. La lista se ordena por nombre
+        void order();
     }
 
     /**

@@ -14,9 +14,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.amulyakhare.textdrawable.TextDrawable;
 import com.amulyakhare.textdrawable.util.ColorGenerator;
 import com.example.inventory2.R;
+import com.example.inventory2.data.model.DependencyComparator;
 import com.example.inventory2.model.Dependency;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class DependencyAdapter extends RecyclerView.Adapter<DependencyAdapter.ViewHolder> {
@@ -94,6 +96,34 @@ public class DependencyAdapter extends RecyclerView.Adapter<DependencyAdapter.Vi
         this.list.addAll(list);
 
         //ERROR DE QUE NO ACTUALIZA
+        notifyDataSetChanged();
+    }
+
+    public void delete(Dependency deleted) {
+        list.remove(deleted);
+        notifyDataSetChanged();
+    }
+
+    /**
+     * Ordena la vista en BASE AL METODO COMPARETO DEFINIDA EN EL POJO
+     * (en este caso ordena por nombre)
+     */
+    public void order() {
+        Collections.sort(list);
+        notifyDataSetChanged();
+    }
+
+    public void inverseOrder(){
+        Collections.reverse(list);
+        notifyDataSetChanged();
+    }
+
+    /**
+     * Ordena la vista en base a un objeto de una clase que implementa la interfaz
+     * comparator
+     */
+    public void orderByDescription() {
+        Collections.sort(list, new DependencyComparator());
         notifyDataSetChanged();
     }
 

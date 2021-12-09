@@ -39,7 +39,7 @@
             android:id="@+id/action_dependencyListFragment_to_baseDialogFragment"
             app:destination="@id/baseDialogFragment" />
     </fragment>
-    <fragment
+    <dialog
         android:id="@+id/baseDialogFragment"
         android:name="com.example.inventory2.ui.base.BaseDialogFragment"
         android:label="BaseDialogFragment" />

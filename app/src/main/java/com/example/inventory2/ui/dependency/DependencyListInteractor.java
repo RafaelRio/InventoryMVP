@@ -27,7 +27,7 @@ public class DependencyListInteractor implements OnRepositoryListCallback {
 
     @Override
     public void onDeleteSuccess(String mensaje) {
-
+        listener.onDeleteSuccess(mensaje);
     }
 
     @Override
@@ -41,5 +41,14 @@ public class DependencyListInteractor implements OnRepositoryListCallback {
     public void load() {
         //SIEMPRE SE ACCEDE DE FORMA ESTATICA AL REPOSITORIO
         DependencyRepository.getInstance(this).getList();
+    }
+
+    /**
+     * Elimina la dependencia del repositorio
+     *
+     * @param dependency
+     */
+    public void delete(Dependency dependency) {
+        DependencyRepository.getInstance(this).delete(dependency);
     }
 }

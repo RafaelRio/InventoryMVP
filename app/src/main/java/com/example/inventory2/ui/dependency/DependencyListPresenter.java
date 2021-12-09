@@ -5,10 +5,11 @@ import com.example.inventory2.model.Dependency;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DependencyListPresenter implements DependencyListContract.Presenter, DependencyListContract.OnInteractorListener{
+public class DependencyListPresenter implements DependencyListContract.Presenter, DependencyListContract.OnInteractorListener {
 
     private DependencyListContract.View view;
     private DependencyListInteractor interactor;
+    private Boolean order = false;
 
     public DependencyListPresenter(DependencyListContract.View view) {
         this.view = view;
@@ -21,14 +22,30 @@ public class DependencyListPresenter implements DependencyListContract.Presenter
         interactor.load();
     }
 
+    /**
+     * Este metodo elimina una dependencia de toda la aplicacion (BD, repositorio...)
+     *
+     * @param dependency
+     */
     @Override
     public void delete(Dependency dependency) {
-
+        interactor.delete(dependency);
     }
 
     @Override
     public void undo(Dependency dependency) {
 
+    }
+
+    @Override
+    public void order() {
+        if (order == true) {
+            order = false;
+            view.showDataInverseOrder();
+        } else {
+            order = true;
+            view.showDataOrder();
+        }
     }
 
     @Override
@@ -38,9 +55,9 @@ public class DependencyListPresenter implements DependencyListContract.Presenter
 
     @Override
     public <T> void onSuccess(List<T> list) {
-        if (list.size() == 0){
+        if (list.size() == 0) {
             view.showNoData();
-        }else{
+        } else {
             view.showData((ArrayList<Dependency>) list);
         }
         view.hideProgressBar();
@@ -48,7 +65,7 @@ public class DependencyListPresenter implements DependencyListContract.Presenter
 
     @Override
     public void onDeleteSuccess(String mensaje) {
-
+        view.onDeleteSuccess(mensaje);
     }
 
     @Override

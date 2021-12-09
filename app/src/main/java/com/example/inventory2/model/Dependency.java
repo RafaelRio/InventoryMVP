@@ -1,6 +1,8 @@
 package com.example.inventory2.model;
 
-public class Dependency {
+import androidx.annotation.Nullable;
+
+public class Dependency implements Comparable {
     private String name;
     private String shortName;
     private String description;
@@ -53,5 +55,21 @@ public class Dependency {
                 ", description='" + description + '\'' +
                 ", image='" + image + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(@Nullable Object obj) {
+        return ((Dependency) obj).getName().equals(getName());
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        //return ((Dependency)o).getName().compareTo(getName());
+
+        if (((Dependency) o).getName().equals(getName())) {
+            return ((Dependency) o).getDescription().compareTo(getDescription());
+        } else {
+            return ((Dependency) o).getName().compareTo(getName());
+        }
     }
 }

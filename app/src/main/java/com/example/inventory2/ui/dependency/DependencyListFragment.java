@@ -21,6 +21,8 @@ import com.example.inventory2.R;
 import com.example.inventory2.databinding.FragmentDependencyListBinding;
 import com.example.inventory2.model.Dependency;
 import com.example.inventory2.ui.base.BaseDialogFragment;
+import com.google.android.material.snackbar.BaseTransientBottomBar;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +32,9 @@ public class DependencyListFragment extends Fragment implements DependencyListCo
     private FragmentDependencyListBinding binding;
     private DependencyAdapter adapter;
     private DependencyListContract.Presenter presenter;
+
+
+    private Dependency deleted;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -53,7 +58,10 @@ public class DependencyListFragment extends Fragment implements DependencyListCo
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_orderdependency:
-                Toast.makeText(getActivity(), "Se ha pulsado el ordenar dependencia", Toast.LENGTH_SHORT).show();
+                presenter.order();
+                return true;
+            case R.id.action_order_byDescription:
+                adapter.orderByDescription();
                 return true;
             default:
                 //Si lsos fragments modifican el menu de la Activity se devuelve false
@@ -101,15 +109,16 @@ public class DependencyListFragment extends Fragment implements DependencyListCo
     //region Metodos que vienen de la interfaz del ADAPTER
     @Override
     public void onEditDependency(Dependency dependency) {
-        Toast.makeText(getActivity(), "Editar dependencia " +dependency.getName(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), "Editar dependencia " + dependency.getName(), Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onDeleteDependency(Dependency dependency) {
         Bundle bundle = new Bundle();
-        bundle.putString(BaseDialogFragment.TITLE, "Eliminar dependencia");
-        bundle.putString(BaseDialogFragment.MESSAGE, "¿Quiere eliminar la dependencia " + dependency.getName() + "?");
-
+        bundle.putString(BaseDialogFragment.TITLE, getString(R.string.title_delete_dependency));
+        bundle.putString(BaseDialogFragment.MESSAGE, String.format(getString(R.string.message_delete_dependency), dependency.getShortName()));
+        NavHostFragment.findNavController(this).
+                navigate(R.id.action_dependencyListFragment_to_baseDialogFragment, bundle);
         //Registrar el listener del BaseDialog. Este codigo sirve para comunicar dos Fragments
         //en el cual el padre necesita un resultado del hijo. SI SE USA LA LIBRERIA DE SOPORTE
         //SE DEBE LLAMAR A getSupportFragmentManager()
@@ -117,13 +126,13 @@ public class DependencyListFragment extends Fragment implements DependencyListCo
             @Override
             public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
                 //Si la respuesta del usuario = true, se llama al presentador
-                if (bundle.getBoolean(BaseDialogFragment.KEY_BUNDLE)){
+                if (bundle.getBoolean(BaseDialogFragment.KEY_BUNDLE)) {
+                    deleted = dependency;
                     presenter.delete(dependency);
                 }
             }
         });
-        NavHostFragment.findNavController(this).
-                navigate(R.id.action_dependencyListFragment_to_baseDialogFragment, bundle);
+
     }
     //endregion
 
@@ -138,9 +147,14 @@ public class DependencyListFragment extends Fragment implements DependencyListCo
 
     }
 
+    /**
+     * Metodo que muestra un SnackBar con la opcion UNDO
+     * @param mensaje
+     */
     @Override
     public void onDeleteSuccess(String mensaje) {
-
+        Snackbar.make(getView(), mensaje, BaseTransientBottomBar.LENGTH_LONG).show();
+        adapter.delete(deleted);
     }
 
     @Override
@@ -171,6 +185,16 @@ public class DependencyListFragment extends Fragment implements DependencyListCo
     @Override
     public void showNoData() {
 
+    }
+
+    @Override
+    public void showDataOrder() {
+        adapter.order();
+    }
+
+    @Override
+    public void showDataInverseOrder() {
+        adapter.inverseOrder();
     }
     //endregion
 }

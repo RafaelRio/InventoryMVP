@@ -19,6 +19,7 @@ public class BaseDialogFragment extends DialogFragment {
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
         if (getArguments() != null) {
+            //String title = getArguments();
             //PATRON BUILDER, instancia el constructor del cuadro de dialogo
             AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
             builder.setTitle("Titulo");
@@ -28,7 +29,7 @@ public class BaseDialogFragment extends DialogFragment {
                 public void onClick(DialogInterface dialogInterface, int i) {
                     //Registro la respuesta
                     Bundle bundle = new Bundle();
-                    bundle.getBoolean(KEY_BUNDLE, true);
+                    bundle.putBoolean(KEY_BUNDLE, true);
                     getActivity().getSupportFragmentManager().setFragmentResult(REQUEST, bundle);
                 }
             });

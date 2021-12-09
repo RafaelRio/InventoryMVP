@@ -53,5 +53,9 @@
     <string name="action_search">Buscar</string>
     <string name="action_orderdependency">Ordenar dependencias</string>
     <string name="createdUser">Usuario creado con exito</string>
+    <string name="message_delete_dependency">¿Quiere eliminar la dependencia %1$s ?</string>
+    <string name="confirm_delete_dependency">Se ha eliminado la dependencia %1$s</string>
+    <string name="title_delete_dependency">Eliminar dependencias</string>
+    <string name="action_order_byDescription">Ordenar por descripcion</string>
 
 </resources>
