@@ -34,7 +34,7 @@ public class DependencyListPresenter implements DependencyListContract.Presenter
 
     @Override
     public void undo(Dependency dependency) {
-
+        interactor.undo(dependency);
     }
 
     @Override
@@ -70,7 +70,7 @@ public class DependencyListPresenter implements DependencyListContract.Presenter
 
     @Override
     public void onUndoSuccess(String mensaje) {
-
+        view.onUndoSuccess(mensaje);
     }
 
     @Override

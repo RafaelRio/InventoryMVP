@@ -81,6 +81,18 @@ public class DependencyListFragment extends Fragment implements DependencyListCo
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initRvDependency();
+        initFab();
+    }
+
+    private void initFab() {
+        binding.floatingActionButton2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DependencyListFragmentDirections.ActionDependencyListFragmentToDependencyManagerFragment action
+                        = DependencyListFragmentDirections.actionDependencyListFragmentToDependencyManagerFragment(null);
+                NavHostFragment.findNavController(DependencyListFragment.this).navigate(action);
+            }
+        });
     }
 
     @Override
@@ -109,8 +121,10 @@ public class DependencyListFragment extends Fragment implements DependencyListCo
     //region Metodos que vienen de la interfaz del ADAPTER
     @Override
     public void onEditDependency(Dependency dependency) {
-        Toast.makeText(getActivity(), "Editar dependencia " + dependency.getName(), Toast.LENGTH_SHORT).show();
-    }
+        DependencyListFragmentDirections.ActionDependencyListFragmentToDependencyManagerFragment action
+                = DependencyListFragmentDirections.actionDependencyListFragmentToDependencyManagerFragment(dependency);
+        NavHostFragment.findNavController(DependencyListFragment.this).navigate(action);
+        }
 
     @Override
     public void onDeleteDependency(Dependency dependency) {
@@ -126,7 +140,7 @@ public class DependencyListFragment extends Fragment implements DependencyListCo
             @Override
             public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
                 //Si la respuesta del usuario = true, se llama al presentador
-                if (bundle.getBoolean(BaseDialogFragment.KEY_BUNDLE)) {
+                if (result.getBoolean(BaseDialogFragment.KEY_BUNDLE)) {
                     deleted = dependency;
                     presenter.delete(dependency);
                 }
@@ -153,13 +167,22 @@ public class DependencyListFragment extends Fragment implements DependencyListCo
      */
     @Override
     public void onDeleteSuccess(String mensaje) {
-        Snackbar.make(getView(), mensaje, BaseTransientBottomBar.LENGTH_LONG).show();
+        Snackbar.make(getView(), mensaje, BaseTransientBottomBar.LENGTH_LONG).setAction(getString(R.string.undo), new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                presenter.undo(deleted);
+            }
+        }).show();
         adapter.delete(deleted);
+        if (adapter.getItemCount() == 0){
+            showNoData();
+        }
     }
 
     @Override
     public void onUndoSuccess(String mensaje) {
-
+        //Toast.makeText(getActivity(), "Hola", Toast.LENGTH_SHORT).show();
+        adapter.undo(deleted);
     }
     //endregion
 
@@ -184,7 +207,7 @@ public class DependencyListFragment extends Fragment implements DependencyListCo
 
     @Override
     public void showNoData() {
-
+        Toast.makeText(getActivity(), "Hola", Toast.LENGTH_SHORT).show();
     }
 
     @Override

@@ -127,6 +127,11 @@ public class DependencyAdapter extends RecyclerView.Adapter<DependencyAdapter.Vi
         notifyDataSetChanged();
     }
 
+    public void undo(Dependency deleted) {
+        list.add(deleted);
+        notifyDataSetChanged();
+    }
+
     /**
      * Esta interfaz debe implementarla aquellas clases que quieran escuchar los
      * eventos que ocurren en la lista: editar y eliminar

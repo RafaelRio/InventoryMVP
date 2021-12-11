@@ -2,7 +2,9 @@ package com.example.inventory2.model;
 
 import androidx.annotation.Nullable;
 
-public class Dependency implements Comparable {
+import java.io.Serializable;
+
+public class Dependency implements Comparable, Serializable {
     private String name;
     private String shortName;
     private String description;

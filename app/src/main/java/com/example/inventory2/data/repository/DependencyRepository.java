@@ -48,6 +48,7 @@ public class DependencyRepository implements DependencyListContract.Repository {
 
     @Override
     public void undo(Dependency dependency) {
-
+        list.add(dependency);
+        callback.onUndoSuccess("Operacion cancelada");
     }
 }

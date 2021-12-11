@@ -32,7 +32,7 @@ public class DependencyListInteractor implements OnRepositoryListCallback {
 
     @Override
     public void onUndoSuccess(String mensaje) {
-
+        listener.onUndoSuccess(mensaje);
     }
 
     /**
@@ -50,5 +50,9 @@ public class DependencyListInteractor implements OnRepositoryListCallback {
      */
     public void delete(Dependency dependency) {
         DependencyRepository.getInstance(this).delete(dependency);
+    }
+
+    public void undo(Dependency dependency) {
+        DependencyRepository.getInstance(this).undo(dependency);
     }
 }
