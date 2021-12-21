@@ -5,10 +5,13 @@ import androidx.annotation.Nullable;
 import java.io.Serializable;
 
 public class Dependency implements Comparable, Serializable {
+    public static final String TAG = "dependency";
     private String name;
     private String shortName;
     private String description;
     private String image;
+
+    public Dependency(){}
 
     public Dependency(String name, String shortName, String description, String image) {
         this.name = name;

@@ -99,6 +99,16 @@ public class SignUpActivity extends AppCompatActivity implements SignUpContract.
     }
 
     @Override
+    public void onAddSuccess(String message) {
+
+    }
+
+    @Override
+    public void onEditSuccess() {
+
+    }
+
+    @Override
     public void hideProgressBar() {
 
     }

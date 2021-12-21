@@ -48,14 +48,15 @@
     Si se utiliza android:srcCompat se debe añadir el atributo tint
     dentro del fab y asi modificar el color -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton2"
+        android:id="@+id/fabList"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:clickable="true"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
+        android:clickable="true"
         android:elevation="@dimen/fab_elevation"
-        android:src="@drawable/ic_action_ladd" />
+        android:src="@drawable/ic_settings"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvDependency"

@@ -19,6 +19,9 @@
         <action
             android:id="@+id/action_FirstFragment_to_dependencyListFragment"
             app:destination="@id/dependencyListFragment" />
+        <action
+            android:id="@+id/action_DashBoardFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
     </fragment>
     <fragment
         android:id="@+id/aboutUsFragment"
@@ -52,7 +55,20 @@
         android:label="fragment_dependency_manager"
         tools:layout="@layout/fragment_dependency_manager" >
         <argument
-            android:name="dependency"
-            app:argType="com.example.inventory2.model.Dependency" />
+            android:name="Dependency"
+            app:argType="com.example.inventory2.model.Dependency"
+            app:nullable="true" />
     </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.inventory2.ui.preferences.SettingsFragment"
+        android:label="SettingsFragment" >
+        <action
+            android:id="@+id/action_settingsFragment_to_accountFragment"
+            app:destination="@id/accountFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/accountFragment"
+        android:name="com.example.inventory2.ui.preferences.AccountFragment"
+        android:label="AccountFragment" />
 </navigation>

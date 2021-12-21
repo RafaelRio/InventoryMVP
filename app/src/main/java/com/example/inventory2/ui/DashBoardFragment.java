@@ -63,11 +63,19 @@ public class DashBoardFragment extends Fragment implements View.OnClickListener 
             case R.id.btiDependency:
                 showAddDependency();
                 break;
+
+            case R.id.btiSettings:
+                showSettings();
+                break;
         }
     }
 
     private void showAddDependency() {
         NavHostFragment.findNavController(this).navigate(R.id.action_FirstFragment_to_dependencyListFragment);
+    }
+
+    private void showSettings() {
+        NavHostFragment.findNavController(this).navigate(R.id.action_DashBoardFragment_to_settingsFragment);
     }
 
     /**

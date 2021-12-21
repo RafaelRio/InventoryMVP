@@ -75,4 +75,14 @@ public class SignUpInteractor implements OnRepositoryCallback {
     public void onFailure(String message) {
         listener.onFailure(message);
     }
+
+    @Override
+    public void onAddSuccess(String message) {
+
+    }
+
+    @Override
+    public void onEditSuccess() {
+
+    }
 }

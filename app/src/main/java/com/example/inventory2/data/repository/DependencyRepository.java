@@ -1,13 +1,15 @@
 package com.example.inventory2.data.repository;
 
 import com.example.inventory2.model.Dependency;
+import com.example.inventory2.ui.base.OnRepositoryCallback;
 import com.example.inventory2.ui.base.OnRepositoryListCallback;
 import com.example.inventory2.ui.dependency.DependencyListContract;
+import com.example.inventory2.ui.dependency.DependencyManageContract;
 
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class DependencyRepository implements DependencyListContract.Repository {
+public class DependencyRepository implements DependencyListContract.Repository, DependencyManageContract.Repository {
 
     private static DependencyRepository instance;
     private OnRepositoryListCallback callback;
@@ -23,6 +25,13 @@ public class DependencyRepository implements DependencyListContract.Repository {
             instance = new DependencyRepository();
         }
         instance.callback = callback;
+        return instance;
+    }
+
+    public static DependencyRepository getInstance() {
+        if (instance == null) {
+            instance = new DependencyRepository();
+        }
         return instance;
     }
 
@@ -50,5 +59,17 @@ public class DependencyRepository implements DependencyListContract.Repository {
     public void undo(Dependency dependency) {
         list.add(dependency);
         callback.onUndoSuccess("Operacion cancelada");
+    }
+
+
+    @Override
+    public void add(Dependency dependency, OnRepositoryCallback callback) {
+        list.add(dependency);
+        callback.onAddSuccess("Se ha añadido correctamente");
+    }
+
+    @Override
+    public void edit(Dependency dependency, OnRepositoryCallback onRepositoryCallback) {
+
     }
 }

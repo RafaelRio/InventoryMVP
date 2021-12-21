@@ -19,14 +19,19 @@
         <entry key="..\:/Users/rafa2/AndroidStudioProjects/Inventory2/app/src/main/res/menu/fragmentlist_menu.xml" value="0.259375" />
         <entry key="..\:/Users/rafa2/AndroidStudioProjects/Inventory2/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2755208333333333" />
         <entry key="..\:/Users/rafa2/AndroidStudioProjects/InventoryMVP/app/src/main/res/layout/activity_login.xml" value="0.25226449275362317" />
+        <entry key="..\:/Users/rafa2/AndroidStudioProjects/InventoryMVP/app/src/main/res/layout/activity_main.xml" value="0.22916666666666666" />
         <entry key="..\:/Users/rafa2/AndroidStudioProjects/InventoryMVP/app/src/main/res/layout/activity_sign_up.xml" value="0.259375" />
+        <entry key="..\:/Users/rafa2/AndroidStudioProjects/InventoryMVP/app/src/main/res/layout/activity_splash.xml" value="0.22916666666666666" />
         <entry key="..\:/Users/rafa2/AndroidStudioProjects/InventoryMVP/app/src/main/res/layout/dependency_item.xml" value="0.259375" />
         <entry key="..\:/Users/rafa2/AndroidStudioProjects/InventoryMVP/app/src/main/res/layout/fragment_about_us.xml" value="0.25226449275362317" />
         <entry key="..\:/Users/rafa2/AndroidStudioProjects/InventoryMVP/app/src/main/res/layout/fragment_add_edit.xml" value="0.259375" />
         <entry key="..\:/Users/rafa2/AndroidStudioProjects/InventoryMVP/app/src/main/res/layout/fragment_dependency_list.xml" value="0.259375" />
+        <entry key="..\:/Users/rafa2/AndroidStudioProjects/InventoryMVP/app/src/main/res/layout/fragment_dependency_manager.xml" value="0.22916666666666666" />
         <entry key="..\:/Users/rafa2/AndroidStudioProjects/InventoryMVP/app/src/main/res/layout/layout_progressbar.xml" value="0.259375" />
         <entry key="..\:/Users/rafa2/AndroidStudioProjects/InventoryMVP/app/src/main/res/layout/layout_progressdialog.xml" value="0.259375" />
         <entry key="..\:/Users/rafa2/AndroidStudioProjects/InventoryMVP/app/src/main/res/menu/fragmentlist_menu.xml" value="0.259375" />
+        <entry key="..\:/Users/rafa2/AndroidStudioProjects/InventoryMVP/app/src/main/res/xml/account_preferences.xml" value="0.259375" />
+        <entry key="..\:/Users/rafa2/AndroidStudioProjects/InventoryMVP/app/src/main/res/xml/root_preferences.xml" value="0.2572463768115942" />
       </map>
     </option>
   </component>

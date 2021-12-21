@@ -52,6 +52,16 @@ public class LoginPresenter implements LoginContract.Presenter, LoginContract.On
     }
 
     @Override
+    public void onAddSuccess(String message) {
+
+    }
+
+    @Override
+    public void onEditSuccess() {
+
+    }
+
+    @Override
     public void onDestroy() {
         this.view = null;
         this.interactor = null;

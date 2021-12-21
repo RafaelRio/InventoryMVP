@@ -26,6 +26,16 @@ public class SignUpPresenter implements SignUpContract.Presenter, SignUpContract
     }
 
     @Override
+    public void onAddSuccess(String message) {
+
+    }
+
+    @Override
+    public void onEditSuccess() {
+
+    }
+
+    @Override
     public void onUserEmptyError() {
         view.setUserEmptyError();
     }

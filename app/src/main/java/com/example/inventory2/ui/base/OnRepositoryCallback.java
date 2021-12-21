@@ -7,4 +7,6 @@ package com.example.inventory2.ui.base;
 public interface OnRepositoryCallback {
     void onSuccess(String message);
     void onFailure(String message);
+    void onAddSuccess(String message);
+    void onEditSuccess();
 }

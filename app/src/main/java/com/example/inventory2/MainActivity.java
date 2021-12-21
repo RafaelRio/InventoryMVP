@@ -8,12 +8,17 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
+import androidx.preference.Preference;
+import androidx.preference.PreferenceFragmentCompat;
 
 import com.example.inventory2.databinding.ActivityMainBinding;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity  implements PreferenceFragmentCompat.OnPreferenceStartFragmentCallback {
 
     ActivityMainBinding binding;
 
@@ -49,6 +54,14 @@ public class MainActivity extends AppCompatActivity {
                 //Si lsos fragments modifican el menu de la Activity se devuelve false
                 return false;
         }
+    }
 
+    @Override
+    public boolean onPreferenceStartFragment(PreferenceFragmentCompat caller, Preference pref) {
+        NavController navController = Navigation.findNavController(MainActivity.this, R.id.nav_host_fragment_container);
+        if (pref.getKey().equals(getString(R.string.key_account))){
+            navController.navigate(R.id.action_settingsFragment_to_accountFragment);
+        }
+        return true;
     }
 }

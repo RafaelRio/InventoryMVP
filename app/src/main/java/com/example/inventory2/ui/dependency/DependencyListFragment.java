@@ -85,7 +85,7 @@ public class DependencyListFragment extends Fragment implements DependencyListCo
     }
 
     private void initFab() {
-        binding.floatingActionButton2.setOnClickListener(new View.OnClickListener() {
+        binding.fabList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 DependencyListFragmentDirections.ActionDependencyListFragmentToDependencyManagerFragment action
@@ -95,11 +95,11 @@ public class DependencyListFragment extends Fragment implements DependencyListCo
         });
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        presenter.load();
-    }
+        @Override
+        public void onStart() {
+            super.onStart();
+            presenter.load();
+        }
 
     /**
      * Este metodo inicializa el componente recyclerView

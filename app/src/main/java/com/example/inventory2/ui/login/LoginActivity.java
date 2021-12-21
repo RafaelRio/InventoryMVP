@@ -1,7 +1,9 @@
 package com.example.inventory2.ui.login;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -22,8 +24,6 @@ import com.example.inventory2.utils.CommonUtils;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
-
-import java.util.regex.Pattern;
 
 public class LoginActivity extends AppCompatActivity implements LoginContract.View {
 
@@ -112,6 +112,12 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
      */
     @Override
     public void onSuccess(String message) {
+        SharedPreferences.Editor editor =
+                PreferenceManager.getDefaultSharedPreferences(this).edit();
+        if (binding.ckRemember.isChecked()) {
+            editor.putString(User.TAG, binding.tieEmail.getText().toString());
+            editor.apply();
+        }
         toMainActivity();
     }
 
@@ -131,6 +137,16 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
+    @Override
+    public void onAddSuccess(String message) {
+
+    }
+
+    @Override
+    public void onEditSuccess() {
+
+    }
+
     //endregion
 
     //region Clase interna que controla cada vez que el usuario introduce un caracter
@@ -142,11 +158,11 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
      * @param password
      */
     private void validatePassword(String password) {
-        if (TextUtils.isEmpty(password)){
+        if (TextUtils.isEmpty(password)) {
             binding.tilPassword.setError(getString(R.string.err_emptyPassword));
-        }else if (!CommonUtils.isPasswordValid(password)){
+        } else if (!CommonUtils.isPasswordValid(password)) {
             binding.tilPassword.setError(getString(R.string.err_Password));
-        }else{
+        } else {
             binding.tilPassword.setError(null);
         }
     }
@@ -161,13 +177,21 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     private void validateEmail(String email) {
         if (TextUtils.isEmpty(email)) {
             binding.tilEmail.setError(getString(R.string.err_emptyEmail));
-        }else if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+        } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             binding.tilEmail.setError(getString(R.string.err_email));
-        }else {
+        } else {
             //desaparece el error
             binding.tilEmail.setError(null);
         }
     }
+
+    @Subscribe
+    public void onEvent(Event event) {
+        hideProgressBar();
+        Toast.makeText(this, event.getMessage(), Toast.LENGTH_SHORT).show();
+    }
+
+    //endregion
 
     class LoginTextWatcher implements TextWatcher {
 
@@ -198,13 +222,5 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
                     break;
             }
         }
-    }
-
-    //endregion
-
-    @Subscribe
-    public void onEvent(Event event){
-        hideProgressBar();
-        Toast.makeText(this, event.getMessage(), Toast.LENGTH_SHORT).show();
     }
 }
