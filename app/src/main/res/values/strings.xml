@@ -87,6 +87,11 @@
     <string name="notification_summary">Activar las notificaciones de nuestra aplicacio</string>
     <string name="title_ringtone">Sonido de la notificacion</string>
     <string name="summary_ringtone">Seleccionar el tono de las notificaciones</string>
-    <string name="ringtone">Sonido</string>
+    <string name="key_ringtone">Sonido</string>
+    <string name="key_user">user</string>
+    <string name="title_user">Usuario</string>
+    <string name="key_password">password</string>
+    <string name="title_password">Contraseña</string>
+    <string name="key_help">ayuda</string>
 
 </resources>

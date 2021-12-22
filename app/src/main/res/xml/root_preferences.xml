@@ -4,6 +4,7 @@
     <!-- Vamos a crear una categoria que muestra otro Fragment de preferencias -->
 
     <Preference
+        android:fragment="com.example.inventory2.ui.preferences.AccountFragment"
         android:icon="@drawable/ic_account"
         android:key="@string/key_account"
         android:title="@string/title_account"
@@ -21,7 +22,7 @@
         </SwitchPreference>
 
         <ListPreference
-            android:key="@string/ringtone"
+            android:key="@string/key_ringtone"
             android:title="@string/title_ringtone"
             android:summary="@string/summary_ringtone"
             android:entries="@array/ringtone"
@@ -48,7 +49,8 @@
     <!-- Preferencias con las opciones de la ayuda, que se mostrara en la pagina web -->
     <PreferenceCategory android:title="@string/help_header">
         <Preference
-            android:title="@string/help_point">
+            android:title="@string/help_point"
+            android:key="@string/key_help">
             <intent
                 android:action="android.intent.action.VIEW"
                 android:data="https://faq.whatsapp.com/">

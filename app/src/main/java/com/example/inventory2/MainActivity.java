@@ -10,8 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
-import androidx.navigation.fragment.NavHostFragment;
-import androidx.navigation.ui.AppBarConfiguration;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 
@@ -58,7 +56,7 @@ public class MainActivity extends AppCompatActivity  implements PreferenceFragme
 
     @Override
     public boolean onPreferenceStartFragment(PreferenceFragmentCompat caller, Preference pref) {
-        NavController navController = Navigation.findNavController(MainActivity.this, R.id.nav_host_fragment_container);
+        NavController navController = Navigation.findNavController(MainActivity.this, R.id.nav_host_fragment_main);
         if (pref.getKey().equals(getString(R.string.key_account))){
             navController.navigate(R.id.action_settingsFragment_to_accountFragment);
         }
