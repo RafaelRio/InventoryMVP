@@ -9,4 +9,9 @@
         android:id="@+id/action_order_byDescription"
         android:orderInCategory="1"
         app:showAsAction="never"/>
+
+    <item android:title="@string/action_volver"
+        android:id="@+id/action_volver"
+        android:orderInCategory="2"
+        app:showAsAction="never"/>
 </menu>

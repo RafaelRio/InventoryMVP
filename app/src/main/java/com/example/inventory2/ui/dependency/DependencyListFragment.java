@@ -63,6 +63,9 @@ public class DependencyListFragment extends Fragment implements DependencyListCo
             case R.id.action_order_byDescription:
                 adapter.orderByDescription();
                 return true;
+            case R.id.action_volver:
+                NavHostFragment.findNavController(this).navigateUp();
+                return true;
             default:
                 //Si lsos fragments modifican el menu de la Activity se devuelve false
                 return super.onOptionsItemSelected(item);

@@ -93,5 +93,6 @@
     <string name="key_password">password</string>
     <string name="title_password">Contraseña</string>
     <string name="key_help">ayuda</string>
+    <string name="action_volver">volver</string>
 
 </resources>

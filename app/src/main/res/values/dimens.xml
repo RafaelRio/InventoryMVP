@@ -18,4 +18,5 @@
     <dimen name="tvName_marginBottom">2dp</dimen>
     <dimen name="llDependencyPadding">5dp</dimen>
     <dimen name="tvNoDataTextSize">24dp</dimen>
+    <dimen name="toolbar_elevation">4dp</dimen>
 </resources>

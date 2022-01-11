@@ -10,10 +10,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 
 import com.example.inventory2.databinding.ActivityMainBinding;
+import com.example.inventory2.databinding.FragmentDashboardBinding;
 
 
 public class MainActivity extends AppCompatActivity  implements PreferenceFragmentCompat.OnPreferenceStartFragmentCallback {
@@ -24,6 +26,7 @@ public class MainActivity extends AppCompatActivity  implements PreferenceFragme
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setSupportActionBar(binding.toolbar);
         setContentView(binding.getRoot());
     }
 
