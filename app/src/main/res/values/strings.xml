@@ -94,5 +94,12 @@
     <string name="title_password">Contraseña</string>
     <string name="key_help">ayuda</string>
     <string name="action_volver">volver</string>
+    <string name="tvUser">Usuario</string>
+    <string name="tvEmail">Correo electrionico</string>
+    <string name="action_Inventory">Inventario</string>
+    <string name="action_dependency">Dependencias</string>
+    <string name="action_Sections">Secciones</string>
+    <string name="action_products">Productos</string>
+    <string name="menu_options">Opciones</string>
 
 </resources>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp">
+
+    <!-- Imagen de perfil -->
+    <com.mikhaellopez.circularimageview.CircularImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/ic_action_user"
+        app:civ_border_color="#0050DA"
+        android:scaleType="centerCrop"
+        app:civ_border_width="4dp"
+        android:gravity="center"
+        android:layout_gravity="center"
+        app:civ_shadow="true"
+        app:civ_shadow_radius="10dp"
+        app:civ_shadow_color="#000000"/>
+
+    <TextView
+        android:id="@+id/tvUser"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/tvUser"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
+
+    <TextView
+        android:id="@+id/tvEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/tvEmail"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
+</LinearLayout>

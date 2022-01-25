@@ -60,4 +60,7 @@ dependencies {
 
     //Libreria que pone icono en la primera letra
     implementation 'com.amulyakhare:com.amulyakhare.textdrawable:1.0.1'
+
+    //Libreria para navigationdrawer con imagen redonda
+    implementation 'com.mikhaellopez:circularimageview:4.3.0'
 }
