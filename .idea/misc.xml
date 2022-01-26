@@ -35,9 +35,17 @@
         <entry key="..\:/Users/rafa2/AndroidStudioProjects/InventoryNavigation/app/src/main/res/drawable-anydpi/ic_menu.xml" value="0.2712820512820513" />
         <entry key="..\:/Users/rafa2/AndroidStudioProjects/InventoryNavigation/app/src/main/res/layout/activity_content.xml" value="0.2545289855072464" />
         <entry key="..\:/Users/rafa2/AndroidStudioProjects/InventoryNavigation/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/Users/rafa2/AndroidStudioProjects/InventoryNavigation/app/src/main/res/layout/fragment_dashboard.xml" value="0.23822463768115942" />
+        <entry key="..\:/Users/rafa2/AndroidStudioProjects/InventoryNavigation/app/src/main/res/layout/fragment_dependency_list.xml" value="0.23822463768115942" />
+        <entry key="..\:/Users/rafa2/AndroidStudioProjects/InventoryNavigation/app/src/main/res/layout/fragment_product.xml" value="0.2427536231884058" />
+        <entry key="..\:/Users/rafa2/AndroidStudioProjects/InventoryNavigation/app/src/main/res/layout/fragment_product_description.xml" value="0.2427536231884058" />
+        <entry key="..\:/Users/rafa2/AndroidStudioProjects/InventoryNavigation/app/src/main/res/layout/fragment_product_info.xml" value="0.2427536231884058" />
+        <entry key="..\:/Users/rafa2/AndroidStudioProjects/InventoryNavigation/app/src/main/res/layout/fragment_product_map.xml" value="0.2427536231884058" />
+        <entry key="..\:/Users/rafa2/AndroidStudioProjects/InventoryNavigation/app/src/main/res/layout/fragment_products.xml" value="0.23822463768115942" />
         <entry key="..\:/Users/rafa2/AndroidStudioProjects/InventoryNavigation/app/src/main/res/layout/header_nav.xml" value="0.2" />
         <entry key="..\:/Users/rafa2/AndroidStudioProjects/InventoryNavigation/app/src/main/res/menu/activity_menu.xml" value="0.259375" />
         <entry key="..\:/Users/rafa2/AndroidStudioProjects/InventoryNavigation/app/src/main/res/menu/content_menu.xml" value="0.259375" />
+        <entry key="..\:/Users/rafa2/AndroidStudioProjects/InventoryNavigation/app/src/main/res/menu/fragmentlist_menu.xml" value="0.259375" />
       </map>
     </option>
   </component>

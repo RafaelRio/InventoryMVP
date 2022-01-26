@@ -15,7 +15,7 @@
             android:title="@string/action_Sections" />
 
         <item
-            android:id="@+id/action_products"
+            android:id="@+id/productFragment"
             android:title="@string/action_products" />
     </group>
     <item android:title="@string/menu_options">

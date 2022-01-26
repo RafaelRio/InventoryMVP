@@ -52,6 +52,7 @@ public class MainActivity extends AppCompatActivity implements PreferenceFragmen
         topLevelDestination.add(R.id.dependencyListFragment);
         topLevelDestination.add(R.id.settingsFragment);
         topLevelDestination.add(R.id.aboutUsFragment);
+        topLevelDestination.add(R.id.productFragment);
 
         //Configurar la barra de action para que funcione con NavigationUI
 

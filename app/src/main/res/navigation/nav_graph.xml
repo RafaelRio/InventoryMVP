@@ -53,4 +53,9 @@
         android:id="@+id/accountFragment"
         android:name="com.example.inventory2.ui.preferences.AccountFragment"
         android:label="AccountFragment" />
+    <fragment
+        android:id="@+id/productFragment"
+        android:name="com.example.inventory2.ui.product.ProductFragment"
+        android:label="fragment_products"
+        tools:layout="@layout/fragment_product" />
 </navigation>
