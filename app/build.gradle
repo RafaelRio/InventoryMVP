@@ -63,4 +63,9 @@ dependencies {
 
     //Libreria para navigationdrawer con imagen redonda
     implementation 'com.mikhaellopez:circularimageview:4.3.0'
+
+    def room_version = "2.4.1"
+
+    implementation "androidx.room:room-runtime:$room_version"
+    annotationProcessor "androidx.room:room-compiler:$room_version"
 }
